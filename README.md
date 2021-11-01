@@ -24,6 +24,7 @@ Environment variables:
     - `NEO4J_PASSWORD` - password for default user
     - `UI_PORT` - port on which user interface of **Neo4j** instance will be running.
     - `DB_PORT` - port, on which **Neo4j** instance will be running.
+    - `MEMORY_LIMIT` - default memory limit of **Neo4j** database
 - `DATABASE_NETWORK` - network, on which our database will be accessible.
 
 ```dotenv
