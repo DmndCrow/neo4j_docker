@@ -1,0 +1,29 @@
+version: '3'
+services:
+  neo4j:
+    container_name: neo4j_database
+    image: neo4j:${IMAGE_TAG}
+    restart: unless-stopped
+    ports:
+      - ${UI_PORT}:7474
+      - ${DB_PORT}:7687
+    volumes:
+      - ./conf:/conf
+      - ./data:/data
+      - ./import:/import
+      - ./logs:/logs
+      - ./plugins:/plugins
+    environment: 
+      # Raise memory limits
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms.memory.heap.initial_size=1G
+      - NEO4J_dbms_memory_heap_max__size=1G
+      # User config
+      - NEO4J_AUTH=neo4j/${NEO4J_PASSWORD}
+    networks:
+      - database_network
+
+networks:
+  database_network:
+    external:
+      name: ${DATABASE_NETWORK}

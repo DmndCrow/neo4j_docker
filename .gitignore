@@ -1,0 +1,7 @@
+conf/
+data/
+import/
+logs/
+plugins/
+
+.env
